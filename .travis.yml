@@ -6,7 +6,7 @@ services:
 deploy:
   provider: heroku
   api_key:
-    secure: paGLgwt3khGz2yuNfzvb
+    secure: 332ba3ad-bb27-409e-bc83-816d6e7c0cb4
   app: immense-hollows-35075
   on:
     repo: Daniel-Slabaugh/blog-app-mongoose-challenge-solution
