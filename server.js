@@ -1,5 +1,5 @@
-const bodyParser = require('body-parser');
 const express = require('express');
+const bodyParser = require('body-parser');
 const mongoose = require('mongoose');
 const morgan = require('morgan');
 
@@ -19,7 +19,7 @@ app.get('/posts', (req, res) => {
     .find()
     .exec()
     .then(posts => {
-      res.json(posts.map(post => post.apiRepr()));
+      res.status(200).json(posts.map(post => post.apiRepr()));
     })
     .catch(err => {
       console.error(err);
@@ -31,7 +31,7 @@ app.get('/posts/:id', (req, res) => {
   BlogPost
     .findById(req.params.id)
     .exec()
-    .then(post => res.json(post.apiRepr()))
+    .then(post => res.status(200).json(post.apiRepr()))
     .catch(err => {
       console.error(err);
       res.status(500).json({error: 'something went horribly awry'});
@@ -57,8 +57,8 @@ app.post('/posts', (req, res) => {
     })
     .then(blogPost => res.status(201).json(blogPost.apiRepr()))
     .catch(err => {
-        console.error(err);
-        res.status(500).json({error: 'Something went wrong'});
+      console.error(err);
+      res.status(500).json({error: 'Something went wrong'});
     });
 
 });
